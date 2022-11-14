@@ -14,5 +14,4 @@ int main(int ac, char **argv) {
             }
         }
     }
-    std::cout << "\n";
-}
+    std::cout << std::endl;
