@@ -1,16 +1,24 @@
 #include <iostream>
+#include <string>
 #include "PhoneBook.class.hpp"
 
 int main(void) {
-    char        input[256];
+    std::string        input;
     PhoneBook   phonebook;
 
-    while (std::strcmp(input, "EXIT")) {
+    input = "";
+    while (std::strcmp(input.c_str(), "EXIT")) {
         std::cout << "COMMAND: ";
-        std::cin >> input;
+        std::getline(std::cin, input);
 
-        if (!std::strcmp(input, "SEARCH")) {
-            phonebook.search(input);
+        if (!std::strcmp(input.c_str(), "ADD")) {
+            phonebook.search();
+        }
+        else if (!std::strcmp(input.c_str(), "SEARCH")) {
+            phonebook.search();
+        }
+        else if (!std::strcmp(input.c_str(), "EXIT")) {
+            phonebook.search();
         }
     }
 }
