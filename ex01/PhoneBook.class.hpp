@@ -1,12 +1,14 @@
 #ifndef PHONEBOOK_CLASS_H
 # define PHONEBOOK_CLASS_H
 #include "Contact.class.hpp"
+#include <iostream>
 
 class PhoneBook {
  public:
     PhoneBook(void);
     void addContact(int id, char *first_name, char *last_name, char *nickname, char *phone_number, char *darkest_secret);
     void search(void);
+    void add(void);
 
  private:
    Contact  contacts[8];

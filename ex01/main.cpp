@@ -12,7 +12,7 @@ int main(void) {
         std::getline(std::cin, input);
 
         if (!std::strcmp(input.c_str(), "ADD")) {
-            phonebook.search();
+            phonebook.add();
         }
         else if (!std::strcmp(input.c_str(), "SEARCH")) {
             phonebook.search();

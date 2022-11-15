@@ -36,7 +36,7 @@ void rotate_array(Contact *contacts) {
     contacts[0] = temp;
 }
 
-void    PhoneBook::search(void) {
+void    PhoneBook::add(void) {
     std::string     input;
     Contact         contact;
 
@@ -47,18 +47,39 @@ void    PhoneBook::search(void) {
     else {
         contact = this->contacts[_total_contacts];
     }
+    contact.first_name = (char *)get_input("FIRST NAME").c_str();
 
-    input = get_input("FIRST NAME");
+    contact.last_name = (char *)get_input("LAST NAME: ").c_str();
 
-    std::cout << "LAST NAME: ";
-    std::getline(std::cin, input);
+    contact.nickname = (char *)get_input("NICKNAME: ").c_str();
 
-    std::cout << "NICKNAME: ";
-    std::getline(std::cin, input);
+    contact.phone_number = (char *)get_input("PHONE NUMBER: ").c_str();
 
-    std::cout << "PHONE NUMBER: ";
-    std::getline(std::cin, input);
+    contact.darkest_secret = (char *)get_input("DARKEST SECRET: ").c_str();
+    this->_total_contacts++;
+}
 
-    std::cout << "DARKEST SECRET: ";
-    std::getline(std::cin, input);
+std::string add_padding(int width, const std::string& str) {
+    int len = str.length();
+    if(width < len) { return str; }
+
+    int diff = width - len;
+    int pad1 = diff/2;
+    int pad2 = diff - pad1;
+    return std::string(pad1, ' ') + str + std::string(pad2, ' ');
+}
+
+void    display_all_contacts(Contact *contacts, int total_contacts) {
+    int i;
+
+    i = -1;
+    while (++i < total_contacts) {
+        std::cout << add_padding(3, std::to_string(i)) << "|";
+        std::cout << add_padding(3, std::()) << "|";
+    }
+}
+
+void    PhoneBook::search(void) {
+    display_all_contacts(this->contacts, this->_total_contacts);
+    // display_single_contact();
 }
