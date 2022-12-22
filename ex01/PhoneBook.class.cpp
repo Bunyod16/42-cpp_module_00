@@ -8,23 +8,33 @@ PhoneBook::PhoneBook(void) {
 
 void PhoneBook::rotate_array(void) {
     int i;
-    Contact save;
+    Contact temp(contacts[7]);
 
     i = 0;
-    save = contacts[0];
-    while (i < this->_total_contacts - 1) {
-        this->contacts[i] = this->contacts[i + 1];
-        i++;
+    while (i < 8) {
+        contacts[i] = contacts[i + 1];
     }
     contacts[this->_total_contacts - 1] = save;
 }
 
 void    PhoneBook::add(void) {
-    if (_total_contacts == 8) {
-        this->contacts[0].Edit();
-        rotate_array();
-        this->_total_contacts = this->_total_contacts - 1;
-    } else {
+    std::string     info[5];
+    info[0] = (char *)get_input("FIRST NAME").c_str();
+
+    info[1] = (char *)get_input("LAST NAME: ").c_str();
+
+    info[2] = (char *)get_input("NICKNAME: ").c_str();
+
+    info[3] = (char *)get_input("PHONE NUMBER: ").c_str();
+
+    info[4] = (char *)get_input("DARKEST SECRET: ").c_str();
+    
+    Contact         contact(info[0], info[1], info[2], info[3], info[4]);
+    if (this->_total_contacts == 8) {
+        rotate_array(this->contacts);
+        contact = this->contacts[0];
+    }
+    else {
         this->contacts[this->_total_contacts].Edit();
     }
     this->_total_contacts++;
@@ -65,4 +75,8 @@ void    PhoneBook::search(void) {
         return;
     }
     this->contacts[id].displayFull();
+}
+
+void    PhoneBook::search(void) {
+    display_all_contacts(this->contacts, this->_total_contacts);
 }
