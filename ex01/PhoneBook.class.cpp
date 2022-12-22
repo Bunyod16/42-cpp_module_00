@@ -26,10 +26,9 @@ std::string get_input(std::string prompt) {
 
 void rotate_array(Contact *contacts) {
     int i;
-    Contact temp;
+    Contact temp(contacts[7]);
 
     i = 0;
-    temp = contacts[7];
     while (i < 8) {
         contacts[i] = contacts[i + 1];
     }
@@ -37,9 +36,18 @@ void rotate_array(Contact *contacts) {
 }
 
 void    PhoneBook::add(void) {
-    std::string     input;
-    Contact         contact;
+    std::string     info[5];
+    info[0] = (char *)get_input("FIRST NAME").c_str();
 
+    info[1] = (char *)get_input("LAST NAME: ").c_str();
+
+    info[2] = (char *)get_input("NICKNAME: ").c_str();
+
+    info[3] = (char *)get_input("PHONE NUMBER: ").c_str();
+
+    info[4] = (char *)get_input("DARKEST SECRET: ").c_str();
+    
+    Contact         contact(info[0], info[1], info[2], info[3], info[4]);
     if (this->_total_contacts == 8) {
         rotate_array(this->contacts);
         contact = this->contacts[0];
@@ -47,15 +55,6 @@ void    PhoneBook::add(void) {
     else {
         contact = this->contacts[_total_contacts];
     }
-    contact.first_name = (char *)get_input("FIRST NAME").c_str();
-
-    contact.last_name = (char *)get_input("LAST NAME: ").c_str();
-
-    contact.nickname = (char *)get_input("NICKNAME: ").c_str();
-
-    contact.phone_number = (char *)get_input("PHONE NUMBER: ").c_str();
-
-    contact.darkest_secret = (char *)get_input("DARKEST SECRET: ").c_str();
     this->_total_contacts++;
 }
 
@@ -81,5 +80,4 @@ void    display_all_contacts(Contact *contacts, int total_contacts) {
 
 void    PhoneBook::search(void) {
     display_all_contacts(this->contacts, this->_total_contacts);
-    // display_single_contact();
 }
