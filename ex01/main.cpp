@@ -13,11 +13,9 @@ int main(void) {
 
         if (!std::strcmp(input.c_str(), "ADD")) {
             phonebook.add();
-        }
-        else if (!std::strcmp(input.c_str(), "SEARCH")) {
+        } else if (!std::strcmp(input.c_str(), "SEARCH")) {
             phonebook.search();
-        }
-        else if (!std::strcmp(input.c_str(), "EXIT")) {
+        } else if (!std::strcmp(input.c_str(), "EXIT")) {
             phonebook.search();
         }
     }
