@@ -15,3 +15,4 @@ int main(int ac, char **argv) {
         }
     }
     std::cout << std::endl;
+}
