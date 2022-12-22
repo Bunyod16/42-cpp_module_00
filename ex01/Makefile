@@ -5,7 +5,7 @@ SOURCES = Contact.class.cpp \
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
-CC = c++
+CC = g++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)

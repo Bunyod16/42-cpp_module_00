@@ -9,10 +9,11 @@ class PhoneBook {
     void addContact(int id, char *first_name, char *last_name, char *nickname, char *phone_number, char *darkest_secret);
     void search(void);
     void add(void);
+    Contact  contacts[8];
 
  private:
-   Contact  contacts[8];
-   int      _total_contacts;
+    void    rotate_array(void);
+    int      _total_contacts;
 };
 
 #endif

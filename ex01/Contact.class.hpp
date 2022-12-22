@@ -3,15 +3,16 @@
 
 class Contact {
 
-public:
-    char *first_name;
-    char *last_name;
-    char *nickname;
-    char *phone_number;
-    char *darkest_secret;
-
-    void AddInfo(char *first_name, char *last_name, char *nickname, char *phone_number, char *darkest_secret);
+ public:
+    void displayFull(void);
+    void displayShort(void);
+    void Edit(void);
     ~Contact(void); 
+    std::string first_name;
+    std::string last_name;
+    std::string nickname;
+    std::string phone_number;
+    std::string darkest_secret;
 };
 
 
