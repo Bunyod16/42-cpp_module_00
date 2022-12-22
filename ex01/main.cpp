@@ -16,7 +16,7 @@ int main(void) {
         } else if (!std::strcmp(input.c_str(), "SEARCH")) {
             phonebook.search();
         } else if (!std::strcmp(input.c_str(), "EXIT")) {
-            phonebook.search();
+            return 0;
         }
     }
 }

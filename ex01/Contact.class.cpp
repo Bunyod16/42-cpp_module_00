@@ -2,6 +2,8 @@
 #include <string>
 #include "Contact.class.hpp"
 
+using std::string;
+
 std::string get_input(std::string prompt) {
     std::string input;
 
@@ -17,30 +19,6 @@ std::string get_input(std::string prompt) {
     return (input);
 }
 
-void    Contact::Edit(void) {
-    int i;
-
-    this->first_name = get_input("FIRST NAME: ");
-    this->last_name = get_input("LAST NAME: ");
-    this->nickname = get_input("NICKNAME: ");
-    while (1) {
-        i = -1;
-        this->phone_number = get_input("PHONE NUMBER: ");
-        while (this->phone_number[++i]) {
-            if (!std::isdigit(this->phone_number[i])) {
-                break ;
-            }
-        }
-        if (!std::isdigit(this->phone_number[i])) {
-            std::cout << "Error: phone number must be a numeric" << std::endl;
-            this->phone_number.clear();
-        } else {
-            break;
-        }
-    }
-    this->darkest_secret = get_input("DARKEST SECRET: ");
-}
-
 std::string truncate(std::string str) {
     if (str.length() < 10) {
         return (std::string(10 - str.length(), ' ') + str);
@@ -51,21 +29,20 @@ std::string truncate(std::string str) {
 }
 
 void    Contact::displayShort(void) {
-    std::cout << truncate(this->first_name) + "|" \
-                << truncate(this->last_name) + "|" \
-                << truncate(this->nickname) + "|"\
+    std::cout << truncate(_first_name) + "|" \
+                << truncate(_last_name) + "|" \
+                << truncate(_nickname) + "|"\
                 << std::endl;
 }
 
 
 void    Contact::displayFull(void) {
-    std::cout << "FIRST NAME: " << this->first_name << std::endl;
-    std::cout << "LAST NAME: " << this->last_name << std::endl;
-    std::cout << "NICK NAME: " << this->nickname << std::endl;
-    std::cout << "PNONE NUMBER: " << this->phone_number << std::endl;
-    std::cout << "DARKEST SECRET: " << this->darkest_secret << std::endl;
-
-using std::string;
+    std::cout << "FIRST NAME: " << _first_name << std::endl;
+    std::cout << "LAST NAME: " << _last_name << std::endl;
+    std::cout << "NICK NAME: " << _nickname << std::endl;
+    std::cout << "PNONE NUMBER: " << _phone_number << std::endl;
+    std::cout << "DARKEST SECRET: " << _darkest_secret << std::endl;
+}
 
 Contact::Contact(string fname, string lname, string nname, string pnum, string dsecret) : _first_name(fname), _last_name(lname), _nickname(nname), _phone_number(pnum), _darkest_secret(dsecret) {}
 
@@ -103,4 +80,57 @@ string Contact::getPhoneNumber()
 string Contact::getDarkestSecret()
 {
     return (_darkest_secret);
+}
+
+void Contact::setFirstName(string val)
+{
+    _first_name = val;
+}
+
+void Contact::setLastName(string val)
+{
+    _last_name = val;
+}
+
+void Contact::setNickName(string val)
+{
+    _nickname = val;
+}
+
+void Contact::setPhoneNumber(string val)
+{
+    _phone_number = val;
+}
+
+void Contact::setDarkestSecret(string val)
+{
+    _darkest_secret = val;
+}
+
+void    Contact::Edit(void) {
+    int i;
+
+    string first_name = get_input("FIRST NAME: ");
+    string last_name = get_input("LAST NAME: ");
+    string nickname = get_input("NICKNAME: ");
+    string phone_number;
+    while (1) {
+        i = -1;
+        phone_number = get_input("PHONE NUMBER: ");
+        while (phone_number[++i]) {
+            if (!std::isdigit(phone_number[i])) {
+                std::cout << "Error: phone number must be a numeric" << std::endl;
+                phone_number.clear();
+                break;
+            }
+        }
+        if (phone_number.length() != 0)
+            break;
+    }
+    string darkest_secret = get_input("DARKEST SECRET: ");
+    _first_name = first_name;
+    _last_name = last_name;
+    _nickname = nickname;
+    _phone_number = phone_number;
+    _darkest_secret = darkest_secret;
 }
