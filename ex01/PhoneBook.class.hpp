@@ -8,7 +8,7 @@ class PhoneBook {
     PhoneBook(void);
     void search(void);
     void add(void);
-    Contact  contacts[8];
+    Contact  contacts[3];
 
  private:
     void    rotate_array(void);

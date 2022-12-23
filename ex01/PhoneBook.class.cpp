@@ -8,24 +8,24 @@ PhoneBook::PhoneBook(void) {
 
 void PhoneBook::rotate_array(void) {
     int i;
-    Contact temp(contacts[7]);
+    Contact temp(contacts[0]);
 
-    i = 0;
-    while (i < 8) {
+    i = -1;
+    while (++i < _total_contacts - 1) {
         contacts[i] = contacts[i + 1];
     }
-    contacts[this->_total_contacts - 1] = temp;
+    contacts[_total_contacts - 1] = temp;
 }
 
 void    PhoneBook::add(void) {
-    if (this->_total_contacts == 8) {
+    if (this->_total_contacts == 3) {
         this->contacts[0].Edit();
         rotate_array();
     }
     else {
         this->contacts[this->_total_contacts].Edit();
+        this->_total_contacts++;
     }
-    this->_total_contacts++;
 }
 
 void    PhoneBook::search(void) {
